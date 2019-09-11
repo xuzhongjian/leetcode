@@ -23,10 +23,9 @@ public class JumpGameII {
 
     public static int jump(int[] nums) {
         int count = 0;
-        int end = 0;
         int maxPos = 0;
-        //其实是一步一步走，边走边计算最远的距离
-        for (int i = 0; i < nums.length - 1; i++) {
+        int end = 0;
+        for (int i = 0; i < nums.length; i++) {
             maxPos = Math.max(maxPos, nums[i] + i);
             if (i == end) {
                 end = maxPos;
