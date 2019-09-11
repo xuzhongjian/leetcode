@@ -32,18 +32,15 @@ public class SmallestRangeII {
         System.out.println(smallestRangeII(a, 3));
     }
 
-    public static int smallestRangeII(int[] a, int k) {
-        Arrays.sort(a);
-        int max = Integer.MAX_VALUE;
-        int min = Integer.MIN_VALUE;
-        int delta = Integer.MAX_VALUE;
-        for (int i : a) {
-            int i1 = i + k;
-            int i2 = i - k;
-            max = Math.min(i1, max);
-            min = Math.max(i2, min);
-            delta = Math.min(delta, max - min);
+    public static int smallestRangeII(int[] A, int K) {
+        Arrays.sort(A);
+        int n = A.length;
+        int res = A[n - 1] - A[0];
+        for (int i = 1; i < n; i++) {
+            int min = Math.min(A[0] + K, A[i] - K);
+            int max = Math.max(A[n - 1] - K, A[i - 1] + K);
+            res = Math.min(max - min, res);
         }
-        return delta;
+        return res;
     }
 }
