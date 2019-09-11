@@ -30,6 +30,7 @@ package com.thisxzj.leetcode;
 public class IsSubsequence {
     public static void main(String[] args) {
         System.out.println("hello world");
+        System.out.println("hello world");
     }
 
     public static boolean isSubsequence(String s, String t) {
