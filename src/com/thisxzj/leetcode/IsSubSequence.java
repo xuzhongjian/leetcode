@@ -27,12 +27,17 @@ package com.thisxzj.leetcode;
  */
 
 
-public class IsSubsequence {
+public class IsSubSequence {
     public static void main(String[] args) {
         System.out.println("hello world");
         System.out.println("hello world");
     }
 
+    /**
+     * @param s {String}
+     * @param t {String}
+     * @return T or F
+     */
     public static boolean isSubsequence(String s, String t) {
         return false;
     }

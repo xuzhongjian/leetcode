@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="606af9a2-1013-4eac-bea7-a86c7e81adcb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/thisxzj/leetcode/AssignCookies.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubSequence.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,15 +19,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubSequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+            <state relative-caret-position="278">
+              <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
               <folding>
-                <element signature="e#599#600#0" expanded="true" />
-                <element signature="e#627#628#0" expanded="true" />
+                <element signature="e#808#809#0" expanded="true" />
+                <element signature="e#836#837#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/AssignCookies.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="127">
+              <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -33,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -74,6 +95,9 @@
         <option value="$PROJECT_DIR$/src/com/thisxzj/leetcode/JumpGameII.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java" />
+        <option value="$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubSequence.java" />
+        <option value="$PROJECT_DIR$/src/com/thisxzj/leetcode/AssignCookies.java" />
+        <option value="$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java" />
       </list>
     </option>
   </component>
@@ -97,6 +121,11 @@
             <path>
               <item name="my-leetcode" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-leetcode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-leetcode" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-leetcode" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-leetcode" type="b2602c69:ProjectViewProjectNode" />
@@ -149,7 +178,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JumpGameII">
+  <component name="RunManager" selected="Application.SmallestRangeII">
+    <configuration name="AssignCookies" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.thisxzj.leetcode.AssignCookies" />
+      <module name="my-leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.thisxzj.leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CoinChange" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.thisxzj.leetcode.CoinChange" />
       <module name="my-leetcode" />
@@ -189,8 +231,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SmallestRangeII" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.thisxzj.leetcode.SmallestRangeII" />
+      <module name="my-leetcode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.thisxzj.leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SmallestRangeII" />
+        <item itemvalue="Application.AssignCookies" />
         <item itemvalue="Application.JumpGameII" />
         <item itemvalue="Application.CoinChange" />
         <item itemvalue="Application.Main2" />
@@ -213,15 +270,16 @@
       <workItem from="1568120011798" duration="130000" />
       <workItem from="1568120415495" duration="8048000" />
       <workItem from="1568164671293" duration="235000" />
-      <workItem from="1568165468604" duration="1396000" />
+      <workItem from="1568165468604" duration="4914000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15521000" />
+    <option name="totallyTimeSpent" value="19039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20386267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -233,11 +291,11 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.20869565" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32919255" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919255" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32919255" />
@@ -311,6 +369,24 @@
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -379,7 +455,7 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -390,14 +466,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubsequence.java">
+    <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/IsSubSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="278">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
           <folding>
-            <element signature="e#599#600#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#836#837#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/AssignCookies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/thisxzj/leetcode/SmallestRangeII.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
         </state>
       </provider>
     </entry>
