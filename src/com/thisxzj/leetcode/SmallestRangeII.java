@@ -28,6 +28,7 @@ import java.util.Arrays;
 
 public class SmallestRangeII {
     public static void main(String[] args) {
+
         int[] a = {1, 3, 6};
         System.out.println(smallestRangeII(a, 3));
     }
@@ -37,8 +38,13 @@ public class SmallestRangeII {
         int n = A.length;
         int res = A[n - 1] - A[0];
         for (int i = 1; i < n; i++) {
-            int min = Math.min(A[0] + K, A[i] - K);
-            int max = Math.max(A[n - 1] - K, A[i - 1] + K);
+            int i1 = A[0] + K;
+            int i2 = A[i] - K;
+            int i3 = A[n - 1] - K;
+            int i4 = A[i - 1] + K;
+
+            int min = i1 < i2 ? i1 : i2;
+            int max = i3 > i4 ? i3 : i4;
             res = Math.min(max - min, res);
         }
         return res;
