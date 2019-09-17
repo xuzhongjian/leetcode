@@ -1,41 +1,54 @@
 package com.thisxzj;
 
-import java.util.HashMap;
-        import java.util.Map;
-        import java.util.Scanner;
-        import java.util.Set;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String line = input.nextLine();
-        String[] numString = line.split(",");
-        int[] nums = new int[numString.length];
-        int length = nums.length;
-        for (int i = 0; i < length; i++) {
-            nums[i] = Integer.parseInt(numString[i]);
+        int size = input.nextInt();
+        int[] nums = new int[size];
+        for (int i = 0; i < size; i++) {
+            nums[i] = input.nextInt();
         }
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i : nums) {
-            Integer times = map.get(i);
-            map.put(i, times == null ? 1 : times + 1);
-        }
-        Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
-        int cnt = 0;
-        for (Map.Entry<Integer, Integer> entry : entries) {
-            Integer key = entry.getKey();
-            Integer value = entry.getValue();
-            //System.out.println(key + " " + value);
-            if (value <= key + 1) {
-                cnt = cnt + key + 1;
+        int[] cnt = new int[size];
+        for (int i = 0; i < size; i++) {
+            if (i == 0 || nums[i] < nums[i - 1]) {
+                cnt[i] = 1;
             } else {
-                while (value > 0) {
-                    cnt = cnt + key + 1;
-                    value = value - key - 1;
+                cnt[i] = cnt[i - 1] + 1;
+            }
+        }
+//        for (int i = 0; i < size; i++) {
+//            System.out.print(cnt[i] + " ");
+//        }
+//        System.out.println();
+
+
+        int max = 0;
+        for (int i = 0; i < size; i++) {
+            if (cnt[i] == 1 && i != 0) {
+                if (nums[i] > nums[i - 2] + 1) {
+                    int j = i;
+                    while (true) {
+                        if (j == size - 1) {
+                            break;
+                        }
+                        if (cnt[j] > cnt[j - 1]) {
+                            j++;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    System.out.println(max + " " + (cnt[i - 1] + cnt[j - 1]));
+                    max = Math.max(max, cnt[i - 1] + cnt[j - 1]);
+
                 }
             }
         }
-        System.out.println(cnt);
+        System.out.println(max);
     }
 }
