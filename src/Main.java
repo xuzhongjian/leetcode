@@ -11,37 +11,38 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        List<Integer> list = new ArrayList<>();
-        String line = input.nextLine().trim();
-        while (line != null && !line.equals("")) {
-            int i = Integer.parseInt(line);
-            list.add(i);
-            if (input.hasNextLine()) {
-                line = input.nextLine().trim();
-            } else {
-                line = null;
+        String s = input.nextLine().trim();
+        char[] chars = s.toCharArray();
+        int length = chars.length;
+        boolean[][] dp = func(chars, new boolean[length][length], 0, length - 1);
+
+        int maxI = Integer.MIN_VALUE;
+        int maxJ = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < length; i++) {
+            for (int j = i; j < length; j++) {
+                if (dp[i][j]) {
+                    int delta = j - i;
+                    maxI = delta > max ? i : maxI;
+                    maxJ = delta > max ? j : maxJ;
+                    max = delta;
+                }
             }
         }
-
-        for (Integer integer : list) {
-            System.out.print(integer + " ");
-        }
-        System.out.println();
-        System.out.print(lack(list));
+        System.out.println(s.substring(maxI, maxJ));
     }
 
-    public static int lack(List<Integer> list) {
-        int max = Integer.MIN_VALUE;
-        for (Integer i : list) {
-            max = Math.max(i, max);
+    public static boolean[][] func(char[] chars, boolean[][] dp, int ii, int jj) {
+        int length = dp.length;
+        for (int i = 0; i < length; i++) {
+            for (int j = i + 1; j < length; j++) {
+                //i - 1
+                //j + 1
+                if (chars[i - 1] == chars[j + 1]) {
+
+                }
+            }
         }
-        List<Integer> integerLinkedList = new LinkedList<>();
-        for (int i = 0; i < max; i++) {
-            integerLinkedList.add(i);
-        }
-        for (Integer i : list) {
-            integerLinkedList.remove(i);
-        }
-        return integerLinkedList.get(0);
+        return dp;
     }
 }
