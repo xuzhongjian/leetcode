@@ -6,15 +6,14 @@
  * @author thisxzj - 中建
  */
 public class Singleton {
-
-    private static class Inner {
-        private static final Singleton singleton = new Singleton();
+    public Singleton() {
     }
 
-    private Singleton() {
+    public static class Inner {
+        private static final Singleton uniqueInstance = new Singleton();
     }
 
-    public static Singleton getUniqueInstance() {
-        return Inner.singleton;
+    public Singleton getUniqueInstance() {
+        return Inner.uniqueInstance;
     }
 }

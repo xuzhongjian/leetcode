@@ -27,20 +27,26 @@ public class AssignCookies {
      * @return 满足的孩子的个数
      */
     public static int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int gLength = g.length;
+        int sLength = s.length;
         int gIndex = 0;
         int sIndex = 0;
-        int count = 0;
+        int cnt = 0;
         while (true) {
-            if (sIndex >= s.length || gIndex >= g.length) {
-                return count;
-            }
-            if (s[sIndex] >= g[gIndex]) {
-                sIndex++;
-                gIndex++;
-                count++;
+            if (gIndex >= gLength || sIndex >= sLength) {
+                return cnt;
             } else {
-                sIndex++;
+                if (s[sIndex] >= g[gIndex]) {
+                    cnt++;
+                    sIndex++;
+                    gIndex++;
+                } else {
+                    sIndex++;
+                }
             }
         }
+
     }
 }
