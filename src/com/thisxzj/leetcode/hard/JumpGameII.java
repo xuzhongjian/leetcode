@@ -1,4 +1,4 @@
-package com.thisxzj.leetcode;
+package com.thisxzj.leetcode.hard;
 
 /**
  * date    2019-09-10

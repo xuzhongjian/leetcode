@@ -1,4 +1,4 @@
-package com.thisxzj.leetcode;
+package com.thisxzj.leetcode.medium;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,9 +1,9 @@
-package com.thisxzj.leetcode;
+package com.thisxzj.leetcode.easy;
 
 /**
  * date    2019-09-22
  * time    14:24
- *
+ * "https://leetcode-cn.com/problems/house-robber/"
  * @author thisxzj - 中建
  */
 
