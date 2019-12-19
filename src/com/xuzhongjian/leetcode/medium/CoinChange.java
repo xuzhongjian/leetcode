@@ -1,4 +1,4 @@
-package com.thisxzj.leetcode.medium;
+package com.xuzhongjian.leetcode.medium;
 
 /**
  * "https://leetcode-cn.com/problems/coin-change/"
