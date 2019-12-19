@@ -1,5 +1,8 @@
 package com.xuzhongjian.leetcode.medium;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * leetcode No.3
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -30,10 +33,27 @@ package com.xuzhongjian.leetcode.medium;
  */
 public class LengthOfLongestSubstring {
     public static void main(String[] args) {
-
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
-        return 0;
+        char[] chars = s.toCharArray();
+        int leftIndex = 0;
+        int rightIndex = 0;
+        Set<Character> set = new HashSet<>();
+        int maxLength = 0;
+        while (rightIndex < chars.length) {
+            char rightChar = chars[rightIndex];
+            char leftChar = chars[leftIndex];
+            if (!set.contains(rightChar)) {
+                set.add(rightChar);
+                rightIndex++;
+                maxLength = Math.max(maxLength, rightIndex - leftIndex);
+            } else {
+                set.remove(leftChar);
+                leftIndex++;
+            }
+        }
+        return maxLength;
     }
 }
