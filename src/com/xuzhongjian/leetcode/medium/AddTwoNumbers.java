@@ -2,6 +2,8 @@ package com.xuzhongjian.leetcode.medium;
 
 import com.xuzhongjian.leetcode.common.ListNode;
 
+import java.util.Objects;
+
 /**
  * leetcode No.2
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
@@ -28,7 +30,30 @@ public class AddTwoNumbers {
 
     }
 
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode ans = null;
+        int temp = 0;
 
+        //进位标记
+        boolean flag = false;
+
+        ListNode rear = null;
+        while (l1 != null || l2 != null) {
+            temp = (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + (flag ? 1 : 0);
+            flag = temp >= 10;
+            ListNode innerNode = new ListNode(temp - (flag ? 10 : 0));
+            if (ans == null) {
+                ans = innerNode;
+            } else {
+                rear.next = innerNode;
+            }
+            rear = innerNode;
+            l1 = l1 != null ? l1.next : null;
+            l2 = l2 != null ? l2.next : null;
+        }
+        if (flag) {
+            rear.next = new ListNode(1);
+        }
+        return ans;
     }
 }
