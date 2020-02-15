@@ -45,6 +45,11 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mds" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -154,6 +159,7 @@
       <workItem from="1576759466594" duration="5508000" />
       <workItem from="1576766563588" duration="2842000" />
       <workItem from="1576808876113" duration="53000" />
+      <workItem from="1581782871962" duration="1838000" />
     </task>
     <servers />
   </component>
