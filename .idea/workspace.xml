@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="606af9a2-1013-4eac-bea7-a86c7e81adcb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/to-solve/easy/easy.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/to-solve/hard/hard.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/to-solve/medium/medium.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-leetcode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +43,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mds" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/to-solve/medium" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -46,7 +51,13 @@
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/to-solve" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/to-solve/medium" />
+      <recent name="$PROJECT_DIR$/to-solve/hard" />
+      <recent name="$PROJECT_DIR$/to-solve" />
       <recent name="$PROJECT_DIR$/mds" />
     </key>
   </component>
@@ -65,7 +76,7 @@
   <component name="RunManager" selected="Application.LengthOfLongestSubstring">
     <configuration name="LengthOfLongestSubstring" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.xuzhongjian.leetcode.medium.LengthOfLongestSubstring" />
-      <module name="my-leetcode" />
+      <module name="leetcode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.xuzhongjian.leetcode.medium.*" />
@@ -78,14 +89,14 @@
     </configuration>
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="my-leetcode" />
+      <module name="leetcode" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.thisxzj.company.mafengwo.Main" />
-      <module name="my-leetcode" />
+      <module name="leetcode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.thisxzj.company.mafengwo.*" />
@@ -98,7 +109,7 @@
     </configuration>
     <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.thisxzj.leetcode.Main" />
-      <module name="my-leetcode" />
+      <module name="leetcode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.thisxzj.leetcode.*" />
@@ -111,7 +122,7 @@
     </configuration>
     <configuration name="TwoSum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.xuzhongjian.leetcode.easy.TwoSum" />
-      <module name="my-leetcode" />
+      <module name="leetcode" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.xuzhongjian.leetcode.easy.*" />
@@ -160,6 +171,7 @@
       <workItem from="1576766563588" duration="2842000" />
       <workItem from="1576808876113" duration="53000" />
       <workItem from="1581782871962" duration="1838000" />
+      <workItem from="1581786301045" duration="447000" />
     </task>
     <servers />
   </component>
