@@ -17,15 +17,23 @@
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     List<Integer> result = new ArrayList<>();
 
     public List<List<Integer>> permute(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            set.add(num)
+        }
 
     }
 
-    public void subPermute(nums)
+    public void subPermute(Set<Integer> set, List<Integer> pre) {
+
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
