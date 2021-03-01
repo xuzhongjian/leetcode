@@ -31,22 +31,53 @@
 // 👍 821 👎 0
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] merge(int[][] intervals) {
-        for (int i = 0; i < intervals.length - 1; i++) {
-            if (couldMerge(intervals[i], intervals[i + 1])) {
-                temp = new int[]{intervals[i][0], intervals[i + 1][1]};
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            public int compare(int[] interval1, int[] interval2) {
+                return interval1[0] - interval2[0];
+            }
+        });
+
+        LinkedList<List<Integer>> lists = new LinkedList<>();
+        for (int i = 0; i < intervals.length; i++) {
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(intervals[i][0]);
+            temp.add(intervals[i][1]);
+            lists.add(temp);
+        }
+
+        LinkedList<List<Integer>> result = new LinkedList<>();
+
+        List<Integer> target = lists.pollFirst();
+        while (lists.size() > 0) {
+            List<Integer> e = lists.pollFirst();
+
+            if (couldMerge(target, e)) {
+                target = Arrays.asList(Math.min(target.get(0), e.get(0)), Math.max(target.get(1), e.get(1)));
+            } else {
+                result.add(target);
+                target = e;
             }
         }
+        result.add(target);
+        int size = result.size();
+        int[][] ints = new int[size][2];
+        for (int i = 0; i < result.size(); i++) {
+            ints[i][0] = result.get(i).get(0);
+            ints[i][1] = result.get(i).get(1);
+        }
+        return ints;
     }
 
-    public int[] mergeOne(){
-
-    }
-
-    public boolean couldMerge(int[] e1, int[] e2) {
-        if (e2[0] > e1[0] && e2[0] <= e2[1] && e2[1] > e1[1]) {
+    public boolean couldMerge(List<Integer> target, List<Integer> e) {
+        if (target.get(0) <= e.get(0) && e.get(0) <= target.get(1)) {
             return true;
         }
         return false;
