@@ -26,7 +26,22 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
-
+        int minSum = Integer.MAX_VALUE;
+        int minGap = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length; j++) {
+                for (int k = 0; k < nums.length; k++) {
+                    if (i == j || i == k || j == k) {
+                        continue;
+                    }
+                    if (Math.abs(nums[i] + nums[j] + nums[k] - target) < minGap) {
+                        minGap = Math.abs(nums[i] + nums[j] + nums[k] - target);
+                        minSum = nums[i] + nums[j] + nums[k];
+                    }
+                }
+            }
+        }
+        return minSum;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
