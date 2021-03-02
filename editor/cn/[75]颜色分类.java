@@ -57,10 +57,30 @@
 // 👍 800 👎 0
 
 
+import java.util.HashMap;
+import java.util.Objects;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public void sortColors(int[] nums) {
-
+        HashMap<Integer, Integer> timesMap = new HashMap<>();
+        for (int num : nums) {
+            if (timesMap.containsKey(num)) {
+                timesMap.put(num, timesMap.get(num) + 1);
+            } else {
+                timesMap.put(num, 1);
+            }
+        }
+        int index = 0;
+        for (int i = 0; i <= 2; i++) {
+            Integer times = timesMap.get(i);
+            if (Objects.nonNull(times)) {
+                for (int j = 0; j < times; j++) {
+                    nums[index] = i;
+                    index++;
+                }
+            }
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
