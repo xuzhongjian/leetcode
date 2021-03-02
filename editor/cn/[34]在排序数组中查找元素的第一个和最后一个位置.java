@@ -80,6 +80,7 @@ class Solution {
         while (l < r) {
             mid = l + (r - l) / 2;
             if (mid == l || mid == r) {
+                // add
                 break;
             }
             if (target > nums[mid]) {
