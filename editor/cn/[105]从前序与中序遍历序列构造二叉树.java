@@ -36,23 +36,17 @@ class Solution {
      * @return
      */
     public TreeNode subBuildTree(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd) {
-        System.out.println(pStart);
-        if (pEnd - pStart <= 1) {
+        if (pEnd - pStart < 1) {
             return null;
         }
         TreeNode root = new TreeNode(preorder[pStart]);
-        if (pEnd - pStart <= 1) {
-            return root;
-        }
+
         // 在中序遍历中的 root 节点的index
         int rootIndex = indexOf(inorder, iStart, iEnd, preorder[pStart]);
         // 前部分长度
         int prePartLenght = rootIndex - iStart;
         // 后部分长度
         int backPartLength = pEnd - pStart - prePartLenght - 1;
-        System.out.print(rootIndex + " ");
-        System.out.print(prePartLenght + " ");
-        System.out.println(backPartLength);
 
         root.left = subBuildTree(preorder, pStart + 1, pStart + 1 + prePartLenght, inorder, iStart, iStart + prePartLenght);
         root.right = subBuildTree(preorder, pStart + prePartLenght + 1, pEnd, inorder, iStart + prePartLenght + 1, iEnd);
@@ -67,25 +61,6 @@ class Solution {
             }
         }
         return -1;
-    }
-}
-
-public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

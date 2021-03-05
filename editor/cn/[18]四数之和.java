@@ -33,62 +33,50 @@
 
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
 
-    public List<List<Integer>> fourSum(int[] numsArray, int target) {
-        List<Integer> nums = new ArrayList<>();
-        for (Integer num : numsArray) {
-            nums.add(num);
-        }
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        if (nums == null || nums.length < 4)
+            return new ArrayList<>();
 
-        List<Integer> subRes = new ArrayList<>();
+        Arrays.sort(nums);
+
         List<List<Integer>> res = new ArrayList<>();
-        dfs(nums, 0, 4, subRes, res, target);
-        HashSet<List<Integer>> set = new HashSet<>();
-        for (List<Integer> list : res) {
-            list.sort((o1, o2) -> o1 - o2);
-            set.add(list);
-        }
 
-        return set.stream().collect(Collectors.toList());
-    }
+        // O(n^3)
+        for (int i = 0; i < nums.length - 3; i++) {
+            // 忽略后面与前面重复的元素
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
 
-    /**
-     * @param nums   数据底
-     * @param i      当前的index
-     * @param length 目标长度
-     * @param subRes 单个答案
-     * @param res    整体答案
-     */
-    public void dfs(List<Integer> nums, int i, int length, List<Integer> subRes, List<List<Integer>> res, int target) {
-        if (i == nums.size()) {
-            if (subRes.size() == length) {
-                if (sumCollection(subRes) == target) {
-                    res.add(new ArrayList<>(subRes));
+            for (int j = i + 1; j < nums.length - 2; j++) {
+                // 忽略后面与前面重复的元素
+                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+
+                int partSum = nums[i] + nums[j];
+                int left = j + 1;
+                int right = nums.length - 1;
+
+                while (left < right) {
+                    int sum = partSum + nums[left] + nums[right];
+
+                    if (sum > target) {
+                        right--;
+                    } else if (sum < target) {
+                        left++;
+                    } else {
+                        res.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                        while (left < right && nums[left] == nums[++left]) ;
+                        while (left < right && nums[right] == nums[--right]) ;
+                    }
                 }
             }
-            return;
         }
-        // 不选择当前
-        dfs(nums, i + 1, length, subRes, res, target);
 
-        // 选择当前
-        subRes.add(nums.get(i));
-        dfs(nums, i + 1, length, subRes, res, target);
-        subRes.remove(subRes.size() - 1);
-    }
-
-    public int sumCollection(List<Integer> nums) {
-        int sum = 0;
-        for (Integer num : nums) {
-            sum += num;
-        }
-        return sum;
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
