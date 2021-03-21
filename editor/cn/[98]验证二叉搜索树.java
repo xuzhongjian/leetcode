@@ -34,24 +34,51 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.Objects;
+import java.util.Stack;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode() {}
+ * TreeNode(int val) { this.val = val; }
+ * TreeNode(int val, TreeNode left, TreeNode right) {
+ * this.val = val;
+ * this.left = left;
+ * this.right = right;
+ * }
  * }
  */
 class Solution {
-    public boolean isValidBST(TreeNode root) {
+    private Stack<Integer> stack = new Stack<>();
 
+    public boolean isValidBST(TreeNode root) {
+        midIter(root);
+        int top = stack.pop();
+
+        while (!stack.empty()) {
+            if (top > stack.peek()) {
+                top = stack.pop();
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
+
+    public void midIter(TreeNode node) {
+        if (Objects.isNull(node)) {
+            return;
+        }
+        midIter(node.left);
+        stack.push(node.val);
+        midIter(node.right);
+    }
+
+
 }
 //leetcode submit region end(Prohibit modification and deletion)

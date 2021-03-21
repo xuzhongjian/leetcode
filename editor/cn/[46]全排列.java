@@ -21,28 +21,36 @@ import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    private List<List<Integer>> res = new ArrayList<>();
+    private List<Integer> tempList = new ArrayList<>();
+    private boolean[] visited;
+    private int[] nums;
+
     public List<List<Integer>> permute(int[] nums) {
+        this.nums = nums;
+        visited = new boolean[nums.length];
 
-        List<List<Integer>> res = new ArrayList<>();
-        int[] visited = new int[nums.length];
-        backtrack(res, nums, new ArrayList<Integer>(), visited);
+        dfs();
+
         return res;
-
     }
 
-    private void backtrack(List<List<Integer>> res, int[] nums, ArrayList<Integer> tmp, int[] visited) {
-        if (tmp.size() == nums.length) {
-            res.add(new ArrayList<>(tmp));
+    public void dfs() {
+        if (tempList.size() == nums.length) {
+            res.add(new ArrayList<>(tempList));
             return;
         }
+
         for (int i = 0; i < nums.length; i++) {
-            if (visited[i] == 1) continue;
-            visited[i] = 1;
-            tmp.add(nums[i]);
-            backtrack(res, nums, tmp, visited);
-            visited[i] = 0;
-            tmp.remove(tmp.size() - 1);
+            if (!visited[i]) {
+                tempList.add(nums[i]);
+                visited[i] = true;
+                dfs();
+                visited[i] = false;
+                tempList.remove(tempList.size() - 1);
+            }
         }
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)

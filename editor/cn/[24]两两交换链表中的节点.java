@@ -41,30 +41,51 @@
 // 👍 833 👎 0
 
 
-import Solution.ListNode;
+import java.util.Objects;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        ListNode cur = head;
-        ListNode next
+        if (Objects.isNull(head) || Objects.isNull(head.next)) {
+            return head;
+        }
+
+        ListNode second = head.next;
+        head.next = second.next;
+        second.next = head;
+
+        while (Objects.nonNull(head) && Objects.nonNull(head.next)) {
+            System.out.println(head.val);
+            head = swapNextTwo(head);
+        }
+
+        return second;
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
+    /**
+     * 交换这个节点之后的两个节点
+     *
+     * @param node
+     * @return
+     */
+    public ListNode swapNextTwo(ListNode node) {
+        ListNode next = null;
+        ListNode nextNext = null;
+        if (Objects.isNull(node)) {
+            return null;
+        }
+        if (Objects.isNull(next = node.next)) {
+            return node;
+        }
+        if (Objects.isNull(nextNext = next.next)) {
+            return next;
         }
 
-        ListNode(int val) {
-            this.val = val;
-        }
+        node.next = nextNext;
+        next.next = nextNext.next;
+        nextNext.next = next;
 
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
+        return next;
     }
 
 }

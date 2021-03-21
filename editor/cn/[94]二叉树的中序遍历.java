@@ -55,65 +55,32 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.List;
 
-/*
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- *
-       1
-     2    3
-    4 5  6  7
-
- */
 class Solution {
 
+    private List<Integer> res = new ArrayList<>();
+    private LinkedList<TreeNode> stack = new LinkedList<>();
+
     public List<Integer> inorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
+        helper(root);
+        return res;
+    }
+
+    public void helper(TreeNode root) {
         TreeNode cur = root;
-        while (Objects.nonNull(cur) || !stack.empty()) {
-            while (Objects.nonNull(cur)) {
-                stack.push(cur);
+        while (cur != null || stack.size() != 0) {
+            while (cur != null) {
+                stack.addFirst(cur);
                 cur = cur.left;
             }
-            cur = stack.pop();
+            cur = stack.pollFirst();
             res.add(cur.val);
             cur = cur.right;
         }
-        return res;
     }
 }
-//
-//class TreeNode {
-//    int val;
-//    TreeNode left;
-//    TreeNode right;
-//
-//    TreeNode() {
-//    }
-//
-//    TreeNode(int val) {
-//        this.val = val;
-//    }
-//
-//    TreeNode(int val, TreeNode left, TreeNode right) {
-//        this.val = val;
-//        this.left = left;
-//        this.right = right;
-//    }
-//}
 //leetcode submit region end(Prohibit modification and deletion)
