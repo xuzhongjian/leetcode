@@ -38,22 +38,25 @@ import java.util.PriorityQueue;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>((o1, o2) -> o2 - o1);
-        int[] res = new int[nums.length - k + 1];
-        int i = 0;
-        int j = i + k - 1;
-        for (int m = i; m <= j; m++) {
-            queue.add(nums[m]);
+        int n = nums.length;
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
+            public int compare(int[] pair1, int[] pair2) {
+                return pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1];
+            }
+        });
+        for (int i = 0; i < k; ++i) {
+            pq.offer(new int[]{nums[i], i});
         }
-        res[i] = queue.peek();
-        while (j + 1 < nums.length) {
-            queue.remove(nums[i]);
-            i++;
-            j++;
-            queue.add(nums[j]);
-            res[i] = queue.peek();
+        int[] ans = new int[n - k + 1];
+        ans[0] = pq.peek()[0];
+        for (int i = k; i < n; ++i) {
+            pq.offer(new int[]{nums[i], i});
+            while (pq.peek()[1] <= i - k) {
+                pq.poll();
+            }
+            ans[i - k + 1] = pq.peek()[0];
         }
-        return res;
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
