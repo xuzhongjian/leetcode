@@ -8,10 +8,23 @@
 // 👍 686 👎 0
 
 
+import java.util.LinkedList;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[] dailyTemperatures(int[] T) {
+        int length = T.length;
+        int[] ans = new int[T.length];
+        LinkedList<Integer> stack = new LinkedList<>();
 
+        for (int i = 0; i < T.length; i++) {
+            while (stack.size() != 0 && T[stack.peek()] < T[i]) {
+                int prev = stack.pop();
+                ans[prev] = i - prev;
+            }
+            stack.push(i);
+        }
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

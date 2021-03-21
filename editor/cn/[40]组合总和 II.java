@@ -34,37 +34,27 @@
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     private List<List<Integer>> res = new ArrayList<>();
-    private boolean[] used;
+    private List<Integer> tempList = new ArrayList<>();
+    private int tempSum = 0;
 
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        used = new boolean[candidates.length];
+        Arrays.sort(candidates);
         dfs(candidates, target, 0);
         return res;
     }
 
     public void dfs(int[] candidates, int target, int index) {
         // 当数组走到头了之后
-        if (index == candidates.length) {
-            int sum = 0;
-            ArrayList<Integer> oneRes = new ArrayList<>();
-            for (int i = 0; i < candidates.length; i++) {
-                // 把标记为选用的数字加起来
-                if (used[i]) {
-                    sum = sum + candidates[i];
-                    oneRes.add(candidates[i]);
-                }
-            }
+        if (index == candidates.length || tempSum >= target) {
             // 如果标记为使用到的数字的和 与 目标相吻合 那么添加到答案集合中
-            if (sum == target) {
-                oneRes.sort((o1, o2) -> o1 - o2);
-                if(!res.contains(oneRes)) {
-                    res.add(oneRes);
-                }
+            if (tempSum == target && !res.contains(tempList)) {
+                res.add(new ArrayList<>(tempList));
             }
             return;
         }
@@ -73,9 +63,13 @@ class Solution {
         dfs(candidates, target, index + 1);
 
         // 选用candidates[index]的数字
-        used[index] = true;
+        tempList.add(candidates[index]);
+        tempSum = tempSum + candidates[index];
+
         dfs(candidates, target, index + 1);
-        used[index] = false;
+
+        tempList.remove(tempList.size() - 1);
+        tempSum = tempSum - candidates[index];
     }
 
 

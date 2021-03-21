@@ -33,14 +33,9 @@
 // 👍 595 👎 0
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     private int count = 0;
-
-    private List<Integer> tempList = new ArrayList<>();
 
     public int findTargetSumWays(int[] nums, int S) {
         dfs(nums, S, 0);
@@ -49,25 +44,17 @@ class Solution {
 
     public void dfs(int nums[], int target, int index) {
         if (index == nums.length) {
-            int sum = 0;
-            for (int i : tempList) {
-                sum += i;
-            }
-            if (sum == target) {
+            if (target == 0) {
                 count++;
             }
             return;
         }
 
         // cur is +
-        tempList.add(nums[index]);
-        dfs(nums, target, index + 1);
-        tempList.remove(tempList.size() - 1);
+        dfs(nums, target + nums[index], index + 1);
 
-        // cur is +
-        tempList.add(nums[index] * -1);
-        dfs(nums, target, index + 1);
-        tempList.remove(tempList.size() - 1);
+        // cur is -
+        dfs(nums, target - nums[index], index + 1);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
