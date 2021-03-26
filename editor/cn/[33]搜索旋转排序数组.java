@@ -46,19 +46,26 @@ class Solution {
         int l = 0, r = nums.length - 1, mid = 0;
         while (l <= r) {
             mid = l + (r - l) / 2;
-            if (nums[mid] == target) {
+            int o = nums[l];
+            int p = nums[mid];
+            int q = nums[r];
+
+            if (p == target) {
                 return mid;
             }
-            if (nums[mid] >= nums[l]) {
-                // nums[l] < target < nums[mid]
-                if (target >= nums[l] && target < nums[mid]) {
+            // mid 在前半部分
+            if (o <= p) {
+                // o < target < p
+                if (o <= target && target < p) {
                     r = mid - 1;
                 } else {
                     l = mid + 1;
                 }
-            } else {
-                // nums[mid] < target <= nums[r]
-                if (target > nums[mid] && target <= nums[r]) {
+            }
+            // mid 在后半部分
+            else {
+                // p < target <= q
+                if (p < target && target <= q) {
                     l = mid + 1;
                 } else {
                     r = mid - 1;
@@ -68,4 +75,5 @@ class Solution {
         return -1;
     }
 }
+
 //leetcode submit region end(Prohibit modification and deletion)

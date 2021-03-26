@@ -57,27 +57,23 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 
 class Solution {
+
+    private int sum = 0;
+
     public TreeNode convertBST(TreeNode root) {
-
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
+        dfs(root);
+        return root;
     }
 
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
+    // 利用中序遍历
+    public void dfs(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        dfs(node.right);
+        sum += node.val;
+        node.val = sum;
+        dfs(node.left);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

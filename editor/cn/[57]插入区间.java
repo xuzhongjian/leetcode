@@ -58,7 +58,43 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
+        if (intervals.length == 0) {
+            return new int[][]{{newInterval[0], newInterval[1]}};
+        }
+        int begin = newInterval[0];
+        int end = newInterval[1];
+        int beginIndex = -1;
+        int endIndex = -1;
+        for (int i = 0; i < intervals.length; i++) {
+            int[] interval = intervals[i];
+            if (interval[0] <= begin && begin <= interval[1]) {
+                beginIndex = i;
+            }
+            if (interval[0] <= end && end <= interval[1]) {
+                endIndex = i;
+            }
+        }
+        System.out.println(beginIndex + " " + endIndex);
 
+        int[][] res = new int[intervals.length - (endIndex - beginIndex)][2];
+        for (int i = 0; i < beginIndex; i++) {
+            res[i] = intervals[i];
+        }
+        for (int i = 0; i < intervals.length - endIndex; i++) {
+            res[res.length - 1 - i] = intervals[intervals.length - 1 - i];
+        }
+
+        if (beginIndex != -1 && endIndex != -1) {
+            res[beginIndex] = new int[]{intervals[beginIndex][0], intervals[endIndex][1]};
+        } else if (endIndex == -1) {
+            res[beginIndex] = new int[]{intervals[beginIndex][0], newInterval[1]};
+        } else if (beginIndex == -1) {
+            res[beginIndex] = new int[]{newInterval[0], intervals[endIndex][1]};
+        }
+
+        System.out.println(res[beginIndex][0] + " " + res[beginIndex][1]);
+
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
