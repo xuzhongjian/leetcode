@@ -30,11 +30,6 @@
 // 例如，数字字符串 "3322251" 的描述如下图：
 //                23321511
 //
-// 
-// 
-//
-// 
-//
 // 示例 1： 
 //
 // 
@@ -69,68 +64,23 @@
 // 6.     25 31 22 11
 
 
-import java.util.LinkedList;
-
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String countAndSay(int n) {
-        String ans = "1";
-        n--;
-        while (n > 0) {
-            ans = calString(ans);
-            n--;
+        if (n == 1) {
+            return "1";
         }
-        return ans;
-    }
-
-    public String calString(String s) {
-        LinkedList<Character> stack = new LinkedList<>();
-        char[] chars = s.toCharArray();
-        for (char c : chars) {
-            if (stack.size() == 0 || stack.peek() == c) {
-                stack.push(c);
-            } else {
-                char peek = stack.peek();
-                int count = 0;
-                while (true) {
-                    if (stack.peek() != peek) {
-                        break;
-                    } else {
-                        stack.pop();
-                        count++;
-                    }
-                }
-                String times = String.valueOf(count);
-                for (char timei : times.toCharArray()) {
-                    stack.push(timei);
-                }
-                stack.push(peek);
-                stack.push(c);
-            }
-        }
-        if (stack.size() != 0) {
-            char peek = stack.peek();
-            int count = 0;
-            while (true) {
-                if (stack.size() == 0 || stack.peek() != peek) {
-                    break;
-                } else {
-                    stack.pop();
-                    count++;
-                }
-            }
-            String times = String.valueOf(count);
-            for (char timei : times.toCharArray()) {
-                stack.push(timei);
-            }
-            stack.push(peek);
-        }
-
+        String s = countAndSay(n - 1);
+        int start = 0;
         StringBuilder sb = new StringBuilder();
-        while (stack.size() != 0) {
-            sb.append(stack.pollLast());
+        for (int i = 1; i <= s.length(); i++) {
+            if (i == s.length()) {
+                sb.append(i - start).append(s.charAt(start));
+            } else if (s.charAt(start) != s.charAt(i)) {
+                sb.append(i - start).append(s.charAt(start));
+                start = i;
+            }
         }
-        System.out.println(sb.toString());
         return sb.toString();
     }
 }
