@@ -49,29 +49,34 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * dp[i]: 以 nums[i] 结尾的这个子序列的最长递增子序列的长度
+     * dp[i] = max(dp[m]) + 1 // m < i && nums[m] < nums[i]
+     */
     private int[] dp;
+    private int res;
 
     public int lengthOfLIS(int[] nums) {
         dp = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            dp(nums, i);
-        }
-        int res = 0;
-        for (int i : dp) {
-            res = Math.max(res, i);
-        }
+        fillDp(nums);
         return res;
     }
 
-    public void dp(int[] nums, int index) {
-        int temp = 1;
-        for (int i = 0; i < index; i++) {
-            if (nums[i] < nums[index]) {
-                temp = Math.max(temp, dp[i] + 1);
+    public void fillDp(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            // 需要在 index == i 之前找比 target 小的位置
+            int target = nums[i];
+            int limit = Integer.MIN_VALUE;
+            int temp = 0;
+            for (int m = i - 1; m >= 0; m--) {
+                if (limit < nums[m] && nums[m] < target) {
+                    temp = Math.max(temp, dp[m]);
+                    limit = nums[m];
+                }
             }
+            dp[i] = temp + 1;
+            res = Math.max(res, dp[i]);
         }
-        dp[index] = temp;
     }
-
 }
 //leetcode submit region end(Prohibit modification and deletion)

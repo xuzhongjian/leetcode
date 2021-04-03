@@ -56,18 +56,30 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * dp[i]表示：以 nums[i] 结尾的连续子数组最大的和是 dp[i]
+     * 转移方程：
+     * dp[i] = max(dp[i - 1] + nums[i], nums[i])
+     * 第一项表示，nums[i] 要成为前面的连续子数组的下一位，拼接到原来的连续子数组之后的新的连续子数组的和是 dp[i - 1] + nums[i]
+     * 第二项表示，nums[i] 是一个新的连续子数组的第一位，当然也只有一位，这个崭新的连续子数组的和就是 nums[i]
+     * dp[i] 取这两项中的较大值
+     */
+    private int[] dp;
+    private int res;
+
     public int maxSubArray(int[] nums) {
-        int res = Integer.MIN_VALUE;
-        int tempRes = Integer.MIN_VALUE;
-        for (int num : nums) {
-            if (tempRes <= 0) {
-                tempRes = num;
-            } else {
-                tempRes += num;
-            }
-            res = Math.max(tempRes, res);
-        }
+        dp = new int[nums.length];
+        fullDp(nums);
         return res;
+    }
+
+    public void fullDp(int[] nums) {
+        dp[0] = nums[0];
+        res = dp[0];
+        for (int i = 1; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            res = Math.max(dp[i], res);
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

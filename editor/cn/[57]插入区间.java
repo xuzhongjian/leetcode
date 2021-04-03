@@ -58,43 +58,28 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int[][] insert(int[][] intervals, int[] newInterval) {
-        if (intervals.length == 0) {
-            return new int[][]{{newInterval[0], newInterval[1]}};
+        int[][] res = new int[intervals.length + 1][2];
+        int idx = 0;
+        // 遍历区间列表：
+        // 首先将新区间左边且相离的区间加入结果集
+        int i = 0;
+        while (i < intervals.length && intervals[i][1] < newInterval[0]) {
+            res[idx++] = intervals[i++];
         }
-        int begin = newInterval[0];
-        int end = newInterval[1];
-        int beginIndex = -1;
-        int endIndex = -1;
-        for (int i = 0; i < intervals.length; i++) {
-            int[] interval = intervals[i];
-            if (interval[0] <= begin && begin <= interval[1]) {
-                beginIndex = i;
-            }
-            if (interval[0] <= end && end <= interval[1]) {
-                endIndex = i;
-            }
+        // 接着判断当前区间是否与新区间重叠，重叠的话就进行合并，直到遍历到当前区间在新区间的右边且相离，
+        // 将最终合并后的新区间加入结果集
+        while (i < intervals.length && intervals[i][0] <= newInterval[1]) {
+            newInterval[0] = Math.min(intervals[i][0], newInterval[0]);
+            newInterval[1] = Math.max(intervals[i][1], newInterval[1]);
+            i++;
         }
-        System.out.println(beginIndex + " " + endIndex);
-
-        int[][] res = new int[intervals.length - (endIndex - beginIndex)][2];
-        for (int i = 0; i < beginIndex; i++) {
-            res[i] = intervals[i];
-        }
-        for (int i = 0; i < intervals.length - endIndex; i++) {
-            res[res.length - 1 - i] = intervals[intervals.length - 1 - i];
+        res[idx++] = newInterval;
+        // 最后将新区间右边且相离的区间加入结果集
+        while (i < intervals.length) {
+            res[idx++] = intervals[i++];
         }
 
-        if (beginIndex != -1 && endIndex != -1) {
-            res[beginIndex] = new int[]{intervals[beginIndex][0], intervals[endIndex][1]};
-        } else if (endIndex == -1) {
-            res[beginIndex] = new int[]{intervals[beginIndex][0], newInterval[1]};
-        } else if (beginIndex == -1) {
-            res[beginIndex] = new int[]{newInterval[0], intervals[endIndex][1]};
-        }
-
-        System.out.println(res[beginIndex][0] + " " + res[beginIndex][1]);
-
-        return res;
+        return Arrays.copyOf(res, idx);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

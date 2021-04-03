@@ -46,10 +46,24 @@
 // 👍 489 👎 0
 
 
+import java.util.LinkedList;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean find132pattern(int[] nums) {
-
+        LinkedList<Integer> stack = new LinkedList<>();
+        int n2 = Integer.MIN_VALUE;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int n1 = nums[i];
+            if (n1 < n2) {
+                return true;
+            }
+            while (stack.size() != 0 && stack.getFirst() < n1) {
+                n2 = Math.max(n2, stack.pollFirst());
+            }
+            stack.addFirst(n1);
+        }
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

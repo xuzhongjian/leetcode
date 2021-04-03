@@ -34,27 +34,36 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * 表示，从前 i 户人家偷到的东西的价值最大是 dp[i]
+     * 转移方程：
+     * dp[i] = max(dp[i - 2] + nums[i], dp[i-1])
+     * 其中的第一项表示偷当前这家的收益，因为偷了当前这家，robCur = cur - 2及之前的最大收益 + 当前这家的收益
+     * 其中第二项表示，不偷当前这家的收益，因为不偷当前这家，所以可以偷前一家，notRobCur =  cur - 1及之前的最大收益
+     */
     private int[] dp;
 
     public int rob(int[] nums) {
-        if (nums.length == 0) {
-            return 0;
-        } else if (nums.length == 1) {
-            return nums[0];
-        } else if (nums.length == 2) {
-            return Math.max(nums[0], nums[1]);
+        switch (nums.length) {
+            case 1:
+                return nums[0];
+            case 2:
+                return Math.max(nums[0], nums[1]);
+            default:
+                break;
         }
         dp = new int[nums.length];
-        dpFun(nums);
+        this.buildDp(nums);
         return dp[dp.length - 1];
     }
 
-    public void dpFun(int[] nums) {
+    public void buildDp(int[] nums) {
         dp[0] = nums[0];
         dp[1] = Math.max(nums[0], nums[1]);
         for (int i = 2; i < nums.length; i++) {
             int robCur = dp[i - 2] + nums[i];
-            dp[i] = Math.max(robCur, dp[i - 1]);
+            int notRobCur = dp[i - 1];
+            dp[i] = Math.max(robCur, notRobCur);
         }
     }
 }
