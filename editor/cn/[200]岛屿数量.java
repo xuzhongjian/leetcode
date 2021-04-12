@@ -46,38 +46,55 @@
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    private boolean[][] used;
+
     public int numIslands(char[][] grid) {
-        int count = 0;
+        used = new boolean[grid.length][grid[0].length];
+        int res = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (isIsland(grid, i, j)) {
-                    count++;
+                if (isIsLand(grid, i, j)) {
+                    res++;
                 }
             }
         }
-        return count;
+
+        return res;
     }
 
-    public boolean isIsland(char[][] grid, int index1, int index2) {
-        if (grid[index1][index2] == '0') {
-            return false;
+    public boolean isIsLand(char[][] grid, int i, int j) {
+        if (grid[i][j] != '0' && !used[i][j]) {
+            markUsed(grid, i, j);
+            return true;
         }
-        deleteCurAndAround(grid, index1, index2);
-        return true;
+        return false;
     }
 
-    public void deleteCurAndAround(char[][] grid, int index1, int index2) {
-        if (0 > index1 || index1 >= grid.length
-                || 0 > index2 || index2 >= grid[0].length) {
+    public void markUsed(char[][] grid, int i, int j) {
+        // 超过边界
+        if (!isValidIndex(grid, i, j)) {
             return;
         }
-        if (grid[index1][index2] == '1') {
-            grid[index1][index2] = '0';
-            deleteCurAndAround(grid, index1 - 1, index2);
-            deleteCurAndAround(grid, index1 + 1, index2);
-            deleteCurAndAround(grid, index1, index2 + 1);
-            deleteCurAndAround(grid, index1, index2 - 1);
+        // 已经是海洋了 或者已经被标记使用了
+        if (grid[i][j] == '0' || used[i][j]) {
+            return;
         }
+        // 是岛屿，需要被标记使用
+        used[i][j] = true;
+        markUsed(grid, i, j - 1);
+        markUsed(grid, i, j + 1);
+        markUsed(grid, i - 1, j);
+        markUsed(grid, i + 1, j);
+    }
+
+    public boolean isValidIndex(char[][] grid, int i, int j) {
+        if (i < 0 || i >= grid.length) {
+            return false;
+        }
+        if (j < 0 || j >= grid[0].length) {
+            return false;
+        }
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

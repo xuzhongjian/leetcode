@@ -29,41 +29,22 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
 
     private int count = 0;
-    private List<TreeNode> tempList = new ArrayList<>();
 
     public int pathSum(TreeNode root, int sum) {
-
+        if (root == null) return 0;
+        return dfs(root, sum) + pathSum(root.right, sum) + pathSum(root.left, sum);
     }
 
+    public int dfs(TreeNode node, int sum) {
+        if (node == null) return 0;
+        int count = node.val == sum ? 1 : 0;
+        count += dfs(node.left, sum - node.val);
+        count += dfs(node.right, sum - node.val);
 
-    public void dfs(TreeNode node, int sum) {
-        //
-    }
-}
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode() {
-    }
-
-    TreeNode(int val) {
-        this.val = val;
-    }
-
-    TreeNode(int val, TreeNode left, TreeNode right) {
-        this.val = val;
-        this.left = left;
-        this.right = right;
+        return count;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

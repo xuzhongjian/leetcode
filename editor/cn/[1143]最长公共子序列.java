@@ -52,7 +52,7 @@ class Solution {
      * dp[i][j] 表示以字符串s1.[i]为结尾，以字符串s2.[j]为结尾的两个字符最长的公共字串的长度是 dp[i][j]
      * 转移方程：
      * dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j])  | s2.[j] != s1.[i]
-     * dp[i][j] = dp[i - 1][j - 1]                      | s2.[j] != s1.[i]
+     * dp[i][j] = dp[i - 1][j - 1] + 1                  | s2.[j] == s1.[i]
      */
     public int longestCommonSubsequence(String s1, String s2) {
         int[][] dp = new int[s1.length()][s2.length()];

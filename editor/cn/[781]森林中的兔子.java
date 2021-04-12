@@ -30,10 +30,33 @@
 // 👍 47 👎 0
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int numRabbits(int[] answers) {
-
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int answer : answers) {
+            map.put(answer, map.getOrDefault(answer, 0) + 1);
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            // 额外几只
+            int other = entry.getKey();
+            // 次数
+            int times = entry.getValue();
+            // 还有两只同颜色的兔子，但是出现了三次及以内
+            // 所以认定叫额外两只的兔子是一个颜色的
+            if (other + 1 >= times) {
+                res = res + other + 1;
+            } else {
+                int part = other + 1;
+                int partCount = times / part + (times % part == 0 ? 0 : 1);
+                res = res + part * partCount;
+            }
+        }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
