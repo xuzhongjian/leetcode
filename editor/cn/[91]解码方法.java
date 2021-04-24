@@ -69,28 +69,7 @@ class Solution {
      */
     public int numDecodings(String s) {
         int[] dp = new int[s.length()];
-        if (s.charAt(0) == '0') {
-            return 0;
-        }
-        dp[0] = 1;
 
-        for (int i = 1; i < s.length(); i++) {
-            char cur = s.charAt(i);
-            char prev = s.charAt(i - 1);
-
-            if (cur != '0') dp[i] += dp[i - 1];
-
-            if (prev != '0') {
-                // 和前一个配在一起计算
-                int withPrev = Integer.parseInt("" + prev + cur);
-                if (0 < withPrev && withPrev <= 26) {
-                    dp[i] += (i >= 2 ? dp[i - 2] : 1);
-                } else if (cur == '0') {
-                    return 0;
-                }
-            }
-        }
-        return dp[s.length() - 1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

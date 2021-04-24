@@ -62,25 +62,21 @@ import java.util.List;
 
 class Solution {
 
-    private List<Integer> res = new ArrayList<>();
-    private LinkedList<TreeNode> stack = new LinkedList<>();
-
     public List<Integer> inorderTraversal(TreeNode root) {
-        helper(root);
-        return res;
-    }
+        List<Integer> res = new ArrayList<>();
+        LinkedList<TreeNode> stack = new LinkedList<>();
 
-    public void helper(TreeNode root) {
         TreeNode cur = root;
         while (cur != null || stack.size() != 0) {
             while (cur != null) {
                 stack.addFirst(cur);
                 cur = cur.left;
             }
-            cur = stack.pollFirst();
-            res.add(cur.val);
-            cur = cur.right;
+            TreeNode node = stack.pollFirst();
+            res.add(node.val);
+            cur = node.right;
         }
+        return res;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

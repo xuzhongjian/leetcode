@@ -34,9 +34,12 @@
 // 👍 571 👎 0
 
 
+import java.util.PriorityQueue;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int kthSmallest(int[][] matrix, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
 
     }
 }

@@ -36,10 +36,29 @@
 // 👍 347 👎 0
 
 
+import java.util.HashMap;
+import java.util.Set;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isIsomorphic(String s, String t) {
+        if (s.length() != t.length()) return false;
 
+        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        char[] sArray = s.toCharArray();
+        char[] tArray = t.toCharArray();
+        Set<Character> keys = map.keySet();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (keys.contains(sArray[i]) || map.values().contains(tArray[i])) {
+                if (map.getOrDefault(sArray[i], '-') != tArray[i]) {
+                    return false;
+                }
+            } else {
+                map.put(sArray[i], tArray[i]);
+            }
+        }
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

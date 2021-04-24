@@ -29,19 +29,31 @@
 // 👍 204 👎 0
 
 
+import java.util.Stack;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class CQueue {
+    private Stack<Integer> stack1 = new Stack<Integer>();
+    private Stack<Integer> stack2 = new Stack<Integer>();
 
     public CQueue() {
 
     }
-    
+
     public void appendTail(int value) {
-
+        while (stack1.size() != 0) {
+            int i = stack1.pop();
+            stack2.push(i);
+        }
+        stack2.push(value);
     }
-    
-    public int deleteHead() {
 
+    public int deleteHead() {
+        while (stack2.size() != 0) {
+            int i = stack2.pop();
+            stack1.push(i);
+        }
+        return stack1.size() == 0 ? -1 : stack1.pop();
     }
 }
 

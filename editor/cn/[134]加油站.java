@@ -51,7 +51,25 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
+        for (int i = 0; i < gas.length; i++) if (can(gas, cost, i)) return i;
 
+        return -1;
+    }
+
+    public boolean can(int[] gas, int[] cost, int beginIndex) {
+        // 开不出站
+        if (gas[beginIndex] < cost[beginIndex]) return false;
+
+        int curGas = gas[beginIndex] - cost[beginIndex];
+        int curIndex = beginIndex + 1;
+        while (true) {
+            if (curIndex == gas.length) curIndex = 0;
+            if (curIndex == beginIndex) break;
+            curGas = curGas + gas[curIndex] - cost[curIndex];
+            if (curGas < 0) return false;
+            curIndex++;
+        }
+        return true;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
