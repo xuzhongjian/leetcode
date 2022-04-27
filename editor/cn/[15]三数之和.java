@@ -38,9 +38,15 @@
 // 👍 3024 👎 0
 
 
+import java.util.List;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+
+    }
+
+    public static void main(String[] args) {
 
     }
 }
