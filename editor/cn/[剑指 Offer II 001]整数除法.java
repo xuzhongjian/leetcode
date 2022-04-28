@@ -59,24 +59,17 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public static int divide(int a, int b) {
-        if (a == Integer.MIN_VALUE) {
-            if (b == 1) {
-                return Integer.MIN_VALUE;
-            }
-            if (b == -1) {
-                return Integer.MAX_VALUE;
-            }
-        }
+        if (a == Integer.MIN_VALUE && b == -1) return Integer.MAX_VALUE;
+
         boolean flag = (a < 0 && b > 0) || (a > 0 && b < 0);
-        a = Math.abs(a);
-        b = Math.abs(b);
+        a = -Math.abs(a);
+        b = -Math.abs(b);
 
-        if (a < b) return 0;
-
+        if (a > b) return 0;
 
         int sb = b;
         int res = 1;
-        while ((b << 1) > 0 && a > (b << 1)) {
+        while (b << 1 < 0 && a < b << 1) {
             res = res << 1;
             b = b << 1;
         }
